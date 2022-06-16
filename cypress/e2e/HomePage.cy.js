@@ -26,18 +26,26 @@ describe('Testing Home page', () => {
   it('Search Bar', () => {
 
     cy.get("input[placeholder='Search']").type('mac{enter}');
-    
+
 
   });
 
   it.only("Visiting Register Page", () => {
 
-    var uuid = () => Cypress._.random(0, 1e6) //random emaiil id
-    var id = uuid()
-    var testname = `${id}@yopmail.com`
+    // var uuid = () => Cypress._.random(0, 1e6) //random emaiil id
+    // var id = uuid()
+    // var testname = `${id}@yopmail.com`
+
+    var chars = 'abcdefghijklmnopqrstuvwxyz1234567890';
+    var id = '';
+    var i = 0;
+    while (i < 8) {
+      id += chars[Math.floor(Math.random() * chars.length)];
+      i++;
+    }
+    var mail = id + '@gmail.com'
 
     var digits = Math.floor(Math.random() * 9000000000) + 1000000000; // random ph no
-
     var pwd = Math.random().toString(36).slice(2, 10); //random password
 
     cy.visit(Cypress.env('REGISTER_PAGE_URL'))
@@ -46,7 +54,7 @@ describe('Testing Home page', () => {
 
     cy.get('#input-firstname').type(example.first_name);
     cy.get('#input-lastname').type(example.last_name);
-    cy.get('#input-email').type(testname);
+    cy.get('#input-email').type(mail);
     cy.get('#input-telephone').type(digits);
     cy.get('#input-password').type(pwd);
     cy.get('#input-confirm').type(pwd);
@@ -57,9 +65,6 @@ describe('Testing Home page', () => {
 
 
   })
-
-
-
   it('login', () => {
 
     cy.visit(Cypress.env('LOGIN_PAGE_URL'))

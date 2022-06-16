@@ -14,6 +14,7 @@ module.exports = defineConfig({
   "env": {
     REGISTER_PAGE_URL: 'https://naveenautomationlabs.com/opencart/index.php?route=account/register',
     LOGIN_PAGE_URL:'https://naveenautomationlabs.com/opencart/index.php?route=account/login',
+    MY_ACCOUNT_PAGE_URL: 'https://naveenautomationlabs.com/opencart/index.php?route=account/account',
     "email": "vagi.buddy@gmail.com",
     "password": "ibGRzf7BQnpfFHJ"
   }
