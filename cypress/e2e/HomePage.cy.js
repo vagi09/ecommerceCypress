@@ -30,7 +30,7 @@ describe('Testing Home page', () => {
 
   });
 
-  it.only("Visiting Register Page", () => {
+  it("Visiting Register Page", () => {
 
     // var uuid = () => Cypress._.random(0, 1e6) //random emaiil id
     // var id = uuid()
@@ -86,6 +86,8 @@ describe('Testing Home page', () => {
     cy.contains('Continue')
       .click()
       .url().should('eq', 'https://naveenautomationlabs.com/opencart/index.php?route=common/home');
+
+      
 
   })
 
