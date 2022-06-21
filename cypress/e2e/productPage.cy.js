@@ -5,10 +5,7 @@ import randomItem from '../support/countries.js'
 
 describe('Testing Proucts page', () => {
 
-
-
-
-  before('Login to Home page', () => {
+before('Login to Home page', () => {
 
     cy.login();
   })
@@ -28,25 +25,37 @@ describe('Testing Proucts page', () => {
     cy.get('#input-address-2').type(Address.Address2);
     cy.get('#input-city').type(Address.City);
     cy.get('#input-postcode').type(Address.pin_code);
-    cy.get('#input-country').select(randomItem);
-    //cy.get('#input-zone').select('Pine Cay');
+    cy.get('#input-country').select('India');
+    cy.get('#input-zone').select('Assam');
     cy.get("input[value='1']").check();
     cy.get("input[value='Continue']").click()
       .should('be.visible');
 
     cy.get('.btn.btn-primary').click()
       .should('be.visible');//should('have.css','background-color').and('be.colored', '#229ac8'); //new address
-  })
+  });
+
+  it('Deleting Contacts in Adress book',()=>{
+
+    cy.contains('Address Book').click()
+      .url().should('eq', 'https://naveenautomationlabs.com/opencart/index.php?route=account/address');
+
+      cy.contains('Delete').click();
+
+      cy.on('window:confirm', (text) => { // Handling Confiirmation pop-up in cypress.
+        expect(text).to.contains('Are you sure?');
+        return true;
+      });
+    
+      //cy.get('#confirm-answer').contains('Answer: OK');
+    });
+})
 
   it('click on peoducts', () => {
 
     cy.contains('Desktops').click();
     cy.contains('Show All Desktops').click();
-
-
-
-
-  })
+})
 
 
 
@@ -60,4 +69,4 @@ describe('Testing Proucts page', () => {
 
 
 
-})
+// })

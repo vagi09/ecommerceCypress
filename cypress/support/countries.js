@@ -24,7 +24,7 @@ var country = [
   "Wallis and Futuna","Western Sahara", "Yemen", "Zambia", "Zimbabwe",
 ];
 
-var randomItem = country[Math.floor(Math.random() * country.length)];
+var randomItem = country[Math.floor(Math.random() * country.length)]; //random country name.
 var digits = Math.floor(Math.random() * 9000000000) + 1000000000; // random ph no
 var pwd = Math.random().toString(36).slice(2, 10); //random password
 

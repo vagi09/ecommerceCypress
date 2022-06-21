@@ -28,8 +28,8 @@ describe('Testing Home page', () => {
 
   });
 
-  it.only("Visiting Register Page", () => {
-    
+  it("Visiting Register Page", () => {
+
     cy.visit(Cypress.env('REGISTER_PAGE_URL'))
       .url()
       .should('eq', 'https://naveenautomationlabs.com/opencart/index.php?route=account/register');
