@@ -1,8 +1,6 @@
-//const cypress = require("cypress")
-
 import example from '../fixtures/example.json'
-
-
+import { digits, pwd } from '../support/countries.js'
+import mail from '../support/randomemail.js'
 
 describe('Testing Home page', () => {
 
@@ -30,24 +28,8 @@ describe('Testing Home page', () => {
 
   });
 
-  it("Visiting Register Page", () => {
-
-    // var uuid = () => Cypress._.random(0, 1e6) //random emaiil id
-    // var id = uuid()
-    // var testname = `${id}@yopmail.com`
-
-    var chars = 'abcdefghijklmnopqrstuvwxyz1234567890';
-    var id = '';
-    var i = 0;
-    while (i < 8) {
-      id += chars[Math.floor(Math.random() * chars.length)];
-      i++;
-    }
-    var mail = id + '@gmail.com'
-
-    var digits = Math.floor(Math.random() * 9000000000) + 1000000000; // random ph no
-    var pwd = Math.random().toString(36).slice(2, 10); //random password
-
+  it.only("Visiting Register Page", () => {
+    
     cy.visit(Cypress.env('REGISTER_PAGE_URL'))
       .url()
       .should('eq', 'https://naveenautomationlabs.com/opencart/index.php?route=account/register');
@@ -86,8 +68,6 @@ describe('Testing Home page', () => {
     cy.contains('Continue')
       .click()
       .url().should('eq', 'https://naveenautomationlabs.com/opencart/index.php?route=common/home');
-
-      
 
   })
 
